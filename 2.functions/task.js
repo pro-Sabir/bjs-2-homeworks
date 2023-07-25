@@ -23,12 +23,20 @@ function getArrayParams(...arr) {
   }
   
   function differenceMaxMinWorker(...arr) {
+	if (arr.length === 0) {
+	  return 0;
+	}
+  
 	const max = Math.max(...arr);
 	const min = Math.min(...arr);
 	return max - min;
   }
   
   function differenceEvenOddWorker(...arr) {
+	if (arr.length === 0) {
+	  return 0;
+	}
+  
 	let sumEvenElement = 0;
 	let sumOddElement = 0;
   
@@ -45,6 +53,11 @@ function getArrayParams(...arr) {
   
   function averageEvenElementsWorker(...arr) {
 	const evenElements = arr.filter((num) => num % 2 === 0);
+  
+	if (evenElements.length === 0) {
+	  return 0;
+	}
+  
 	const sumEvenElement = evenElements.reduce((sum, num) => sum + num, 0);
 	const avg = sumEvenElement / evenElements.length;
 	return avg;
@@ -64,5 +77,3 @@ function getArrayParams(...arr) {
 	return maxWorkerResult;
   }
 
-  testCase();
-  
