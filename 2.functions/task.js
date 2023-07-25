@@ -19,7 +19,7 @@ function getArrayParams(...arr) {
 
 
   function summElementsWorker(...arr) {
-	return arr.reduce((sum, num) => sum + num, 0);
+	return arr.reduce((sum, num) => sum + (isNaN(num) ? 0 : num), 0);
   }
   
   function differenceMaxMinWorker(...arr) {
@@ -41,6 +41,10 @@ function getArrayParams(...arr) {
 	let sumOddElement = 0;
   
 	for (const num of arr) {
+	  if (isNaN(num)) {
+		continue;
+	  }
+  
 	  if (num % 2 === 0) {
 		sumEvenElement += num;
 	  } else {
@@ -52,7 +56,7 @@ function getArrayParams(...arr) {
   }
   
   function averageEvenElementsWorker(...arr) {
-	const evenElements = arr.filter((num) => num % 2 === 0);
+	const evenElements = arr.filter((num) => !isNaN(num) && num % 2 === 0);
   
 	if (evenElements.length === 0) {
 	  return 0;
