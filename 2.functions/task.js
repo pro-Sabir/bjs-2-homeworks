@@ -27,9 +27,8 @@ function getArrayParams(...arr) {
       return 0;
     }
   
-    const max = Math.max(...arr.filter((num) => !isNaN(num)));
-    const min = Math.min(...arr.filter((num) => !isNaN(num)));
-  
+    const max = Math.max(...arr);
+    const min = Math.min(...arr);
     return max - min;
   }
   
