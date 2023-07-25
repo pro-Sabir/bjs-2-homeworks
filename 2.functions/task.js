@@ -66,7 +66,7 @@ function getArrayParams(...arr) {
     const sumEvenElement = evenElements.reduce((sum, num) => sum + num, 0);
     const avg = sumEvenElement / evenElements.length;
   
-    return avg;
+    return isNaN(avg) ? 0 : avg;
   }
   
 
