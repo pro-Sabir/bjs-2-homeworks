@@ -33,7 +33,9 @@ Student.prototype.exclude = function (reason) {
 
 module.exports = Student;
 
-const { Student } = require('./student'); 
+const { Student } = require('./student');
+
+describe("Домашнее задание к занятию 4 «Объекты»", () => {
 
 let student1 = new Student("Василиса", "женский", 19);
 student1.setSubject("Algebra");
@@ -46,8 +48,4 @@ let student2 = new Student("Артём", "мужской", 25);
 student2.setSubject("Geometry");
 student2.exclude('плохая учёба');
 console.log(student2);
-
-
-
-
-  
+};
