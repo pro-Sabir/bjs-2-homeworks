@@ -11,39 +11,26 @@ Student.prototype.setSubject = function (subjectName) {
 };
 
 Student.prototype.addMarks = function (...marksToAdd) {
-  if (!this.marks) {
-    this.marks = [];
-  }
-
-  // Проверяем, не был ли студент исключен
-  if (!this.excluded) {
-    this.marks.push(...marksToAdd);
-  }
-
+  this.marks.push(...marksToAdd);
   return this;
 };
 
 Student.prototype.getAverage = function () {
-  if (!this.marks || this.marks.length === 0) {
+  if (!this.marks) {
     return 0;
   }
-
-  // Проверяем, не был ли студент исключен
-  if (!this.excluded) {
-    const sum = this.marks.reduce((total, mark) => total + mark, 0);
-    return sum / this.marks.length;
-  } else {
-    return 0;
-  }
+  const sum = this.marks.reduce((total, mark) => total + mark, 0);
+  return sum / this.marks.length;
 };
 
 Student.prototype.exclude = function (reason) {
   delete this.subject;
-  delete this.marks; // Удаляем свойство this.marks, чтобы его не было в будущем
-
+  this.marks = [];
   this.excluded = reason;
   return this;
 };
+
+module.exports = Student;
 
 // Создание студента
 let student1 = new Student("Василиса", "женский", 19);
