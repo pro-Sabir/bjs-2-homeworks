@@ -1,25 +1,19 @@
-// Определяем функцию-конструктор Student
 function Student(name, gender, age) {
   this.name = name;
   this.gender = gender;
   this.age = age;
-  this.marks = []; // Инициализируем массив оценок пустым массивом
+  this.marks = []; // Инициализируем свойство marks как пустой массив в конструкторе
 }
 
-// Метод для установки предмета студенту
 Student.prototype.setSubject = function (subjectName) {
   this.subject = subjectName;
 };
 
-// Метод для добавления оценок студенту
 Student.prototype.addMarks = function (...marksToAdd) {
-  if (!this.marks) {
-    this.marks = [];
-  }
+  // Здесь не нужно инициализировать свойство marks
   this.marks.push(...marksToAdd);
 };
 
-// Метод для получения среднего балла студента
 Student.prototype.getAverage = function () {
   if (!this.marks || this.marks.length === 0) {
     return 0;
@@ -28,17 +22,16 @@ Student.prototype.getAverage = function () {
   return sum / this.marks.length;
 };
 
-// Метод для исключения студента из учебного процесса
 Student.prototype.exclude = function (reason) {
   delete this.subject;
   delete this.marks;
   this.excluded = reason;
 };
 
-// Экспортируем функцию-конструктор для использования в других файлах
 module.exports = {
   Student,
 };
+
 
 // Пример использования:
 
