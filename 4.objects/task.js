@@ -36,7 +36,7 @@ module.exports = {
 
 
 // Создание студента
-import { Student } from './student';
+const { Student } = require('./student');
 
 let student1 = new Student("Василиса", "женский", 19);
 student1.setSubject("Algebra");
