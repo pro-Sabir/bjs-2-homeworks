@@ -32,7 +32,7 @@ Student.prototype.exclude = function (reason) {
 
 module.exports = Student;
 
-const { Student } = require('./task');
+const { Student } = require('./student'); 
 
 let student1 = new Student("Василиса", "женский", 19);
 student1.setSubject("Algebra");
