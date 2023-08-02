@@ -30,6 +30,22 @@ Student.prototype.exclude = function (reason) {
   this.excluded = reason;
 };
 
+module.exports = Student;
+
+const { Student } = require('./task'); // Правильный путь к файлу task.js
+
+let student1 = new Student("Василиса", "женский", 19);
+student1.setSubject("Algebra");
+console.log(student1.getAverage()); // 0
+student1.addMarks(4, 5, 4, 5);
+console.log(student1.getAverage()); // 4.5
+console.log(student1);
+
+let student2 = new Student("Артём", "мужской", 25);
+student2.setSubject("Geometry");
+student2.exclude('плохая учёба');
+console.log(student2);
+
 
 
 
