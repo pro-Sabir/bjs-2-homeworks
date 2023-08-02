@@ -14,7 +14,12 @@ Student.prototype.addMarks = function (...marksToAdd) {
   if (!this.marks) {
     this.marks = [];
   }
-  this.marks.push(...marksToAdd);
+
+  // Проверяем, не был ли студент исключен
+  if (!this.excluded) {
+    this.marks.push(...marksToAdd);
+  }
+
   return this;
 };
 
@@ -22,13 +27,21 @@ Student.prototype.getAverage = function () {
   if (!this.marks || this.marks.length === 0) {
     return 0;
   }
-  const sum = this.marks.reduce((total, mark) => total + mark, 0);
-  return sum / this.marks.length;
+
+  // Проверяем, не был ли студент исключен
+  if (!this.excluded) {
+    const sum = this.marks.reduce((total, mark) => total + mark, 0);
+    return sum / this.marks.length;
+  } else {
+    return 0;
+  }
 };
 
 Student.prototype.exclude = function (reason) {
   delete this.subject;
-  delete this.marks;
+  // Удаляем свойство this.marks, чтобы его не было в будущем
+  // delete this.marks; // Удалим эту строку
+
   this.excluded = reason;
   return this;
 };
