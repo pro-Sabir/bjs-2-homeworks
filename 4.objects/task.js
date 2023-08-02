@@ -57,4 +57,5 @@ student2.exclude('плохая учёба')
 console.log(student2); // {name: "Артём", gender: "мужской", age: 25, excluded: "плохая учёба"}
 
 
+
   
