@@ -39,8 +39,7 @@ Student.prototype.getAverage = function () {
 
 Student.prototype.exclude = function (reason) {
   delete this.subject;
-  // Удаляем свойство this.marks, чтобы его не было в будущем
-  // delete this.marks; // Удалим эту строку
+  delete this.marks; // Удаляем свойство this.marks, чтобы его не было в будущем
 
   this.excluded = reason;
   return this;
