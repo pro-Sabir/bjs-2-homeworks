@@ -1,4 +1,4 @@
-ffunction Student(name, gender, age) {
+function Student(name, gender, age) {
   this.name = name;
   this.gender = gender;
   this.age = age;
@@ -24,7 +24,6 @@ Student.prototype.getAverage = function () {
   return sum / this.marks.length;
 };
 
-
 Student.prototype.exclude = function (reason) {
   delete this.subject;
   delete this.marks;
@@ -34,6 +33,7 @@ Student.prototype.exclude = function (reason) {
 module.exports = {
   Student,
 };
+
 
 // Создание студента
 let student1 = new Student("Василиса", "женский", 19);
