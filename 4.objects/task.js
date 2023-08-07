@@ -10,7 +10,7 @@ Student.prototype.setSubject = function (subjectName) {
 };
 
 Student.prototype.addMarks = function (...marksToAdd) {
-  if (!this.marks) {
+  if (this.marks.length === 0) {
     this.marks = [];
   }
   this.marks.push(...marksToAdd);
@@ -29,6 +29,7 @@ Student.prototype.exclude = function (reason) {
   delete this.marks;
   this.excluded = reason;
 };
+
 
 // Создание студента
 let student1 = new Student("Василиса", "женский", 19);
