@@ -85,3 +85,63 @@ class PrintEditionItem {
   console.log(picknick.state); // 10
   picknick.fix();
   console.log(picknick.state); // 15
+
+  class Library {
+    constructor(name) {
+      this.name = name;
+      this.books = [];
+    }
+  
+    addBook(book) {
+      if (book.state > 30) {
+        this.books.push(book);
+      }
+    }
+  
+    findBookBy(type, value) {
+      for (const book of this.books) {
+        if (book[type] === value) {
+          return book;
+        }
+      }
+      return null;
+    }
+  
+    giveBookByName(bookName) {
+      for (let i = 0; i < this.books.length; i++) {
+        if (this.books[i].name === bookName) {
+          const book = this.books[i];
+          this.books.splice(i, 1);
+          return book;
+        }
+      }
+      return null;
+    }
+  }
+  
+  // Пример использования
+  const library = new Library("Моя библиотека");
+  
+  const sherlock = new PrintEditionItem(
+    "Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе",
+    2019,
+    1008
+  );
+  sherlock.fix();
+  library.addBook(sherlock);
+  
+  const picknick = new FantasticBook(
+    "Аркадий и Борис Стругацкие",
+    "Пикник на обочине",
+    1972,
+    168
+  );
+  picknick.state = 10;
+  library.addBook(picknick);
+  
+  console.log(library.findBookBy("name", "Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе"));
+  console.log(library.findBookBy("name", "Аркадий и Борис Стругацкие"));
+  
+  console.log(library.giveBookByName("Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе"));
+  console.log(library.books);
+  
