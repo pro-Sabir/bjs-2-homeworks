@@ -29,3 +29,4 @@ Student.prototype.exclude = function (reason) {
   this.marks = [];
   this.excluded = reason;
 };
+
