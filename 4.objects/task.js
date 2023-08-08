@@ -25,8 +25,8 @@ Student.prototype.getAverage = function () {
 };
 
 Student.prototype.exclude = function (reason) {
-  delete this.subject;
-  this.marks = [];
+  this.subject = undefined; // Удаление subject
+  this.marks.length = 0;    // Очистка массива оценок
   this.excluded = reason;
 };
 
