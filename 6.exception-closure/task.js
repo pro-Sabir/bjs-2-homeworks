@@ -40,10 +40,10 @@
     } catch (error) {
       return {
         get area() {
-          return "Ошибка! Треугольник не существует";
+          return NaN;
         },
         get perimeter() {
-          return "Ошибка! Треугольник не существует";
+          return NaN;
         },
       };
     }
