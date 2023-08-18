@@ -31,7 +31,7 @@ class Triangle {
   get area() {
     const p = this.perimeter / 2;
     const areaValue = Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c));
-    return +areaValue.toFixed(3);  
+    return +areaValue.toFixed(3);  // Округление до трех десятичных знаков
   }
 }
 
