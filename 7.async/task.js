@@ -72,10 +72,17 @@ const alarmClock = new AlarmClock();
 alarmClock.addClock("08:00", () => console.log("Пора вставать!"));
 alarmClock.addClock("08:01", () => console.log("Вставай уже!"));
 
+// Сначала добавляем звонки, затем запускаем будильник
 alarmClock.start();
+
 setTimeout(() => {
+  // Останавливаем будильник и очищаем звонки
   alarmClock.stop();
   alarmClock.clearAlarms();
+  
+  // Добавляем новый звонок
   alarmClock.addClock("08:02", () => console.log("Ты проспал!"));
+  
+  // Снова запускаем будильник
   alarmClock.start();
 }, 60000);
