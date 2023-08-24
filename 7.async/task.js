@@ -12,15 +12,15 @@ class AlarmClock {
     const existingAlarm = this.alarmCollection.find(alarm => alarm.time === time);
 
     if (existingAlarm) {
-      console.warn('Уже присутствует звонок на это же время');
-      return;
+      console.warn('Звонок на это же время уже существует. Обновление колбека.');
+      existingAlarm.callback = callback; // Обновляем колбек для существующего звонка
+    } else {
+      this.alarmCollection.push({
+        time: time,
+        callback: callback,
+        canCall: true,
+      });
     }
-
-    this.alarmCollection.push({
-      time: time,
-      callback: callback,
-      canCall: true,
-    });
   }
 
   removeClock(time) {
