@@ -13,7 +13,7 @@ class AlarmClock {
 
     if (existingAlarm) {
       console.warn('Звонок на это же время уже существует. Обновление колбека.');
-      existingAlarm.callback = callback; // Обновляем колбек для существующего звонка
+      existingAlarm.callback = callback; // Обновляем колбек
     } else {
       this.alarmCollection.push({
         time: time,
@@ -52,7 +52,7 @@ class AlarmClock {
     if (this.intervalId) {
       clearInterval(this.intervalId);
       this.intervalId = null;
-      this.resetAllCalls();  // Сбрасываем возможность вызова звонков при остановке интервала
+      this.resetAllCalls();
     }
   }
 
