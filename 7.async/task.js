@@ -20,6 +20,9 @@ class AlarmClock {
         callback: callback,
         canCall: true,
       });
+       clearAlarms() {
+    this.stop();
+    this.alarmCollection = [];
     }
   }
 
@@ -61,6 +64,8 @@ class AlarmClock {
 
   clearAlarms() {
     this.stop();
+    clearInterval(this.intervalId); // Очищаем интервал, если он активен
+    this.intervalId = null;
     this.alarmCollection = [];
   }
 }
