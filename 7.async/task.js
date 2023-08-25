@@ -13,7 +13,6 @@ class AlarmClock {
   
 	  if (existingAlarm) {
 		console.warn('Звонок на это же время уже существует. Обновление колбека.');
-		existingAlarm.callback = callback; // Обновляем колбек
 	  } else {
 		this.alarmCollection.push({
 		  time: time,
