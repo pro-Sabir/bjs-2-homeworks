@@ -13,7 +13,6 @@ class AlarmClock {
 
     if (existingAlarm) {
       console.warn('Звонок на это же время уже существует. Обновление колбека.');
-      existingAlarm.callback = callback; // Обновляем колбек
     } else {
       this.alarmCollection.push({
         time: time,
@@ -56,10 +55,6 @@ class AlarmClock {
       clearInterval(this.intervalId);
       this.intervalId = null;
     }
-  }
-
-  resetAllCalls() {
-    this.alarmCollection.forEach(alarm => alarm.canCall = true);
   }
 
   clearAlarms() {
