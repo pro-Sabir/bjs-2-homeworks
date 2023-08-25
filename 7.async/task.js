@@ -51,12 +51,7 @@ class AlarmClock {
 	  if (this.intervalId) {
 		clearInterval(this.intervalId);
 		this.intervalId = null;
-		this.resetAllCalls();  // Сбрасываем возможность вызова звонков при остановке интервала
 	  }
-	}
-  
-	resetAllCalls() {
-	  this.alarmCollection.forEach(alarm => alarm.canCall = true);
 	}
   
 	clearAlarms() {
@@ -85,3 +80,4 @@ class AlarmClock {
 	// Снова запускаем будильник
 	alarmClock.start();
   }, 60000);
+  
