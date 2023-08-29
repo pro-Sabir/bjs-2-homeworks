@@ -5,23 +5,23 @@ class AlarmClock {
 	}
   
 	addClock(time, callback) {
-	  if (!time || !callback) {
-		throw new Error('Отсутствуют обязательные аргументы');
-	  }
-  
-	  const existingAlarm = this.alarmCollection.find(alarm => alarm.time === time);
-  
-	  if (existingAlarm) {
-		console.warn('Звонок на это же время уже существует. Обновление колбека.');
-		existingAlarm.callback = callback; 
-	  } else {
+		if (!time || !callback) {
+		  throw new Error('Отсутствуют обязательные аргументы');
+		}
+	  
+		const existingAlarm = this.alarmCollection.find(alarm => alarm.time === time);
+	  
+		if (existingAlarm) {
+		  console.warn('Звонок на это же время уже существует. Обновление колбека.');
+		  existingAlarm.callback = callback; // Обновляем колбек
+		}
+	  
 		this.alarmCollection.push({
 		  time: time,
 		  callback: callback,
 		  canCall: true,
 		});
 	  }
-	}
   
 	removeClock(time) {
 	  this.alarmCollection = this.alarmCollection.filter(alarm => alarm.time !== time);
@@ -49,11 +49,9 @@ class AlarmClock {
 	}
   
 	stop() {
-	  if (this.intervalId) {
 		clearInterval(this.intervalId);
 		this.intervalId = null;
 	  }
-	}
   
 	clearAlarms() {
 	  this.stop();
