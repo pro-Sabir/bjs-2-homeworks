@@ -13,6 +13,7 @@ class AlarmClock {
   
 	  if (existingAlarm) {
 		console.warn('Звонок на это же время уже существует. Обновление колбека.');
+		existingAlarm.callback = callback; 
 	  } else {
 		this.alarmCollection.push({
 		  time: time,
@@ -58,6 +59,12 @@ class AlarmClock {
 	  this.stop();
 	  this.alarmCollection = [];
 	}
+  
+	resetAllCalls() {
+	  this.alarmCollection.forEach(alarm => {
+		alarm.canCall = true;
+	  });
+	}
   }
   
   // Пример использования
@@ -73,11 +80,10 @@ class AlarmClock {
 	// Останавливаем будильник и очищаем звонки
 	alarmClock.stop();
 	alarmClock.clearAlarms();
-	
+  
 	// Добавляем новый звонок
 	alarmClock.addClock("08:02", () => console.log("Ты проспал!"));
-	
+  
 	// Снова запускаем будильник
 	alarmClock.start();
   }, 60000);
-  
